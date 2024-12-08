@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Histories from "./pages/Histories";
-import QuizList from "./pages/QuizList";
-import QuizDetailList from "./pages/QuizDetailList";
-import QuizQuestions from "./pages/QuizQuestions";
-import HistoryDetails from "./pages/HistoryDetails";
-import PartsDetails from "./pages/PartsDetails";
-import CharacterPage from "./pages/CharacterPage";
+import Header from "../src/components/header";
+import Footer from "../src/components/footer";
+import Home from ".../src/pages/home";
+import About from "../src/pages/about";
+import Histories from "../src/pages/histories";
+import QuizList from "../src/pages/quiz";
+import QuizDetailList from "../src/pages/quizdetail";
+import QuizQuestions from "../src/pages/quizquestions";
+import HistoryDetails from "../src/pages/historydetails";
+import PartsDetails from "../src/pages/partsdetails";
+import CharacterPage from "../src/pages/characterdetails";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

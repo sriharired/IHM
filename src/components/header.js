@@ -192,6 +192,9 @@ const Header = () => {
         <StyledNavLink to="/histories">
           Histories
         </StyledNavLink>
+        <StyledNavLink to="/contactus">
+          Contact
+        </StyledNavLink>
         <QuizNavLink to="/quiz">
           Quiz
         </QuizNavLink>

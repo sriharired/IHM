@@ -11,6 +11,7 @@ import HistoryDetails from "../src/pages/historydetails";
 import PartsDetails from "../src/pages/partsdetails";
 import CharacterPage from "../src/pages/characterdetails";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import ContactUs from "./pages/contact";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/histories" element={<Histories />} />
+          <Route path="/contactus" element={<ContactUs/>} />
           <Route path="/quiz" element={<QuizList />} />
           <Route path="/quiz/:category" element={<QuizDetailList />} />
           <Route path="/quiz/:category/:quizName" element={<QuizQuestions />} />

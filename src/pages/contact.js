@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import emailjs from "emailjs-com";
 
-// Animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -122,7 +121,6 @@ const ErrorMessage = styled.p`
   margin-top: 1rem;
 `;
 
-// ContactUs Component
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -142,10 +140,10 @@ const ContactUs = () => {
 
     emailjs
       .send(
-        "service_ufwmgug", // Replace with your EmailJS service ID
-        "template_qkpnqwv", // Replace with your EmailJS template ID
+        "service_ufwmgug", 
+        "template_qkpnqwv",
         formData,
-        "32vr14UFsFJybpiGA" // Replace with your EmailJS public key
+        "32vr14UFsFJybpiGA"
       )
       .then(
         (response) => {

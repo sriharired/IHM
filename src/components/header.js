@@ -73,7 +73,7 @@ const Nav = styled.nav`
   @media (max-width: 768px) {
     flex-direction: column;
     position: fixed;
-    top: 30px;
+    top: 50px;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.95);

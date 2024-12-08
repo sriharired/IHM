@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../src/components/header";
 import Home from "../src/pages/home";
@@ -16,8 +16,9 @@ const App = () => {
   useEffect(() => {
     document.title = "IHM - Indian History Mythologies";
   }, []);
+
   return (
-    <Router>
+    <Router basename="/IHM">
       <div className="app">
         <Header />
         <Routes>
@@ -27,7 +28,7 @@ const App = () => {
           <Route path="/histories/:id" element={<HistoryDetails />} />
           <Route path="/histories/:id/parts/:partTitle" element={<PartsDetails />} />
           <Route path="/histories/:id/characters/:characterName" element={<CharacterPage />} />
-          <Route path="/quiz" element={<QuizList/>} />
+          <Route path="/quiz" element={<QuizList />} />
           <Route path="/quiz/:category" element={<QuizDetailList />} />
           <Route path="/quiz/:category/:quizName" element={<QuizQuestions />} />
         </Routes>

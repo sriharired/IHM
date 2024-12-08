@@ -38,7 +38,6 @@ function App() {
             element={<CharacterPage />}
           />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

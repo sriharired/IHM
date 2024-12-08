@@ -22,27 +22,12 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <section id="home">
-                  <Home />
-                </section>
-                <section id="about">
-                  <About />
-                </section>
-                <section id="histories">
-                  <Histories />
-                </section>
-                <section id="quizlist">
-                  <QuizList />
-                </section>
-              </div>
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/histories" element={<Histories />} />
+          <Route path="/quiz" element={<QuizList />} />
+          <Route path="/quiz/:category" element={<QuizDetailList />} />
+          <Route path="/quiz/:category/:quizName" element={<QuizQuestions />} />
           <Route path="/histories/:id" element={<HistoryDetails />} />
           <Route
             path="/histories/:id/parts/:partTitle"
@@ -52,9 +37,6 @@ function App() {
             path="/histories/:id/characters/:characterName"
             element={<CharacterPage />}
           />
-          <Route path="/quiz" element={<QuizList />} />
-          <Route path="/quiz/:category" element={<QuizDetailList />} />
-          <Route path="/quiz/:category/:quizName" element={<QuizQuestions />} />
         </Routes>
         <Footer />
       </div>

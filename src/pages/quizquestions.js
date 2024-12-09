@@ -69,7 +69,7 @@ const OptionButton = styled.button`
     props.isCorrect ? "#4CAF50" : props.isWrong ? "#FF5722" : "#ffffff"};
   color: ${(props) => (props.isCorrect || props.isWrong ? "#ffffff" : "#000000")};
   border: none;
-  padding: 15px;
+  padding: 20px;
   margin: 10px 0;
   border-radius: 5px;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
@@ -88,11 +88,11 @@ const OptionButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 12px;
+    padding: 20px;
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
+    padding: 20px;
   }
 `;
 
@@ -117,7 +117,7 @@ const TimerContainer = styled.div`
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
-    margin-top: 16rem;
+    margin-top: 10rem;
   }
 
     @media (max-width: 768px) {

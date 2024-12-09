@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footer";
 import HistoriesData from "../data/historiesdata.json";
-
 
 const PageWrapper = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const PageContent = styled.div`
   color: #ffffff;
 
   @media (max-width: 768px) {
-    padding: 1rem; 
+    padding: 1rem;
   }
 `;
 
@@ -125,10 +124,13 @@ const CardBack = styled.div`
   }
 `;
 
-
 const Histories = () => {
   const navigate = useNavigate();
   const histories = HistoriesData.histories;
+
+  useEffect(() => {
+    document.title = "Types of Histories";
+  }, []);
 
   const handleReadMore = (title) => {
     const formattedTitle = title.toLowerCase().replace(/\s+/g, "-");
@@ -153,7 +155,9 @@ const Histories = () => {
                   <CardBack>
                     <h3>{history.title}</h3>
                     <p>{history.carddesc}</p>
-                    <button onClick={() => handleReadMore(history.title)}>Read</button>
+                    <button onClick={() => handleReadMore(history.title)}>
+                      Read
+                    </button>
                   </CardBack>
                 </CardInner>
               </Card>

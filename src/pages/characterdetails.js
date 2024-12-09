@@ -111,14 +111,13 @@ const CharactersContainer = styled.div`
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: flex-start;
-  justify-content: flex-start; /* Align characters to the left */
+  justify-content: flex-start; 
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  margin-left: -2rem; /* Move characters further to the left */
-
+  margin-left: -2rem; 
   h2 {
-    width: 100%; /* Make the title span the full width */
+    width: 100%; 
     font-size: 2rem;
     font-weight: bold;
     color: #ffffff;
@@ -131,7 +130,7 @@ const CharactersContainer = styled.div`
   }
 
   @media (max-width: 1024px) {
-    margin-left: 0; /* Reset margin on smaller screens */
+    margin-left: 0; 
   }
 
   @media (max-width: 768px) {
@@ -147,7 +146,7 @@ const CharacterCard = styled.div`
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-  width: 150px; /* Fixed width for cards */
+  width: 150px; 
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -177,7 +176,7 @@ const CharacterCard = styled.div`
 
 const HistoryBar = styled.div`
   flex: 1;
-  min-width: 250px; /* Ensure the width stays constant */
+  min-width: 250px; 
   max-width: 250px;
   background: #000000;
   padding: 1.5rem;

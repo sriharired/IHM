@@ -5,26 +5,26 @@
   import Footer from "../components/footer";
 
   const PageWrapper = styled.div`
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const PageContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(135deg, #1e3c72, #f56b2a);
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  padding: 2rem;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
     flex-direction: column;
-    min-height: 100vh;
-  `;
-
-  const PageContent = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    background: linear-gradient(135deg, #1e3c72, #f56b2a);
-    color: #ffffff;
-    font-family: "Arial", sans-serif;
-    padding: 2rem;
-    align-items: flex-start;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      padding: 1rem;
-    }
-  `;
+    padding: 1rem;
+  }
+`;
 
   const MainContent = styled.div`
     flex: 4;
@@ -196,19 +196,28 @@ const SidebarTitle = styled.h3`
     const { id } = useParams();
     const navigate = useNavigate();
     const history = historiesData.histories[id];
-
+  
+    // Set document title dynamically
+    useEffect(() => {
+      if (history) {
+        document.title = history.title; // Set the title based on the current history's title
+      } else {
+        document.title = "History Not Found";
+      }
+    }, [history]);
+  
     if (!history) {
       return <PageContent>History not found.</PageContent>;
     }
-
+  
     const handleCharacterClick = (name) => {
       navigate(`/histories/${id}/characters/${name.toLowerCase()}`);
     };
-
+  
     const handlePartClick = (title) => {
       navigate(`/histories/${id}/parts/${title.toLowerCase().replace(/\s+/g, "-")}`);
     };
-
+  
     return (
       <PageWrapper>
         <PageContent>
@@ -232,7 +241,7 @@ const SidebarTitle = styled.h3`
               </CharacterContainer>
             </CharactersSection>
           </MainContent>
-
+  
           <PartsBar>
             <SidebarTitle>Parts</SidebarTitle>
             {history.parts.map((part, index) => (
@@ -250,5 +259,5 @@ const SidebarTitle = styled.h3`
       </PageWrapper>
     );
   };
-
+  
   export default HistoryDetails;

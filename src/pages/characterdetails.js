@@ -23,32 +23,34 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 5rem;
 
   @media (max-width: 1024px) {
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+    gap: 1.5rem;
   }
 `;
 
 const ImageContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background: transparent;
-  padding: 1rem;
-  border-radius: 12px;
+  text-align: center;
 
   h1 {
-    text-align: center;
     font-size: 2rem;
     color: #ffffff;
-    margin: 0;
+    margin-bottom: 1rem;
 
     @media (max-width: 768px) {
       font-size: 1.5rem;
@@ -69,12 +71,11 @@ const ImageContainer = styled.div`
 `;
 
 const DescriptionContainer = styled.div`
-  margin-top: 4rem;
+  flex: 2;
   background: #1e1e1e;
   padding: 1.5rem;
   border-radius: 12px;
   color: #f2cb05;
-  flex: 1;
 
   p {
     font-size: 1.2rem;
@@ -85,39 +86,43 @@ const DescriptionContainer = styled.div`
       font-size: 1rem;
     }
   }
-
-  @media (max-width: 1024px) {
-    margin-top: 1rem;
-  }
 `;
 
 const CharactersAndHistoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 3rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  margin: 2rem auto;
+  gap: 2rem;
   max-width: 1200px;
+  margin: 2rem auto;
 
   @media (max-width: 1024px) {
     flex-direction: column;
-    align-items: center;
     gap: 2rem;
+    align-items: center;
   }
 `;
 
 const CharactersContainer = styled.div`
+  
   flex: 3;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start; /* Align characters to the left */
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-left: -2rem; /* Move characters further to the left */
 
   h2 {
+    width: 100%; /* Make the title span the full width */
     font-size: 2rem;
     font-weight: bold;
     color: #ffffff;
-    text-align: center;
+    text-align: left;
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
@@ -125,17 +130,16 @@ const CharactersContainer = styled.div`
     }
   }
 
-  div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+  @media (max-width: 1024px) {
+    margin-left: 0; /* Reset margin on smaller screens */
+  }
 
-    @media (max-width: 768px) {
-      gap: 1rem;
-    }
+  @media (max-width: 768px) {
+    gap: 1rem;
+    padding: 1rem;
   }
 `;
+
 
 const CharacterCard = styled.div`
   background: ${({ isSelected }) =>
@@ -143,18 +147,16 @@ const CharacterCard = styled.div`
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-  width: 150px;
+  width: 150px; /* Fixed width for cards */
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: ${({ isSelected }) =>
-    isSelected ? "0px 0px 12px 4px rgba(255, 255, 255, 0.8)" : "none"};
 
   img {
     width: 150px;
     height: 200px;
     border-radius: 12px;
-    margin-bottom: 0.5rem;
     object-fit: cover;
+    margin-bottom: 0.5rem;
 
     @media (max-width: 768px) {
       width: 120px;
@@ -175,15 +177,16 @@ const CharacterCard = styled.div`
 
 const HistoryBar = styled.div`
   flex: 1;
+  min-width: 250px; /* Ensure the width stays constant */
+  max-width: 250px;
   background: #000000;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
 
-
   h3 {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: #ffffff;
     text-decoration: underline;
 
@@ -197,9 +200,8 @@ const HistoryBar = styled.div`
     padding: 0;
 
     li {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       font-size: 1.2rem;
-      line-height: 1.6;
 
       @media (max-width: 768px) {
         font-size: 1rem;
@@ -208,25 +210,13 @@ const HistoryBar = styled.div`
       a {
         text-decoration: none;
         font-weight: bold;
-        cursor: pointer;
-        color: ${({ historyId }) =>
-          historyId === "ramayana"
-            ? "#FFA500"
-            : historyId === "bhagavad-gita"
-            ? "#00FFFF"
-            : historyId === "guru-granth-sahib"
-            ? "#32CD32"
-            : "#FFFFFF"};
+        color: #ffffff;
 
         &:hover {
           text-decoration: underline;
         }
       }
     }
-  }
-
-  @media (max-width: 1024px) {
-    width: 90%;
   }
 `;
 
@@ -270,44 +260,27 @@ const CharacterPage = () => {
       </ContentWrapper>
 
       <CharactersAndHistoryWrapper>
+      <CharactersContainer>
+  <h2>Characters</h2>
+  {history.characters.map((char) => (
+    <CharacterCard
+      key={char.name}
+      isSelected={char.name === selectedCharacter.name}
+      onClick={() => handleCharacterClick(char)}
+    >
+      <img src={require(`../images/${char.img}`)} alt={char.name} />
+      <div>{char.name}</div>
+    </CharacterCard>
+  ))}
+</CharactersContainer>
 
-        <CharactersContainer>
-          <h2>Characters</h2>
-          <div>
-            {history.characters.map((char) => (
-              <CharacterCard
-                key={char.name}
-                isSelected={char.name === selectedCharacter.name}
-                onClick={() => handleCharacterClick(char)}
-              >
-                <img
-                  src={require(`../images/${char.img}`)}
-                  alt={char.name}
-                />
-                <div>{char.name}</div>
-              </CharacterCard>
-            ))}
-          </div>
-        </CharactersContainer>
 
         <HistoryBar>
-          <h3>HISTORIES</h3>
+          <h3>Histories</h3>
           <ul>
             {Object.keys(historiesData.histories).map((historyId) => (
               <li key={historyId}>
-                <a
-                  style={{
-                    color:
-                      historyId === "ramayana"
-                        ? "#FFA500"
-                        : historyId === "bhagavad-gita"
-                        ? "#00FFFF"
-                        : historyId === "guru-granth-sahib"
-                        ? "#32CD32"
-                        : "#FFFFFF",
-                  }}
-                  onClick={() => navigate(`/histories/${historyId}`)}
-                >
+                <a onClick={() => navigate(`/histories/${historyId}`)}>
                   {historiesData.histories[historyId].title}
                 </a>
               </li>
@@ -315,6 +288,7 @@ const CharacterPage = () => {
           </ul>
         </HistoryBar>
       </CharactersAndHistoryWrapper>
+      <Footer />
     </PageWrapper>
   );
 };

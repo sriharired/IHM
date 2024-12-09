@@ -137,7 +137,7 @@ const Histories = () => {
     navigate(`/histories/${formattedTitle}`);
   };
 
-  return (
+  return (  
     <PageWrapper>
       <PageContent>
         <Header>Types Of Histories</Header>

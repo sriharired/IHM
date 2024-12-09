@@ -197,10 +197,9 @@ const SidebarTitle = styled.h3`
     const navigate = useNavigate();
     const history = historiesData.histories[id];
   
-    // Set document title dynamically
     useEffect(() => {
       if (history) {
-        document.title = history.title; // Set the title based on the current history's title
+        document.title = history.title;
       } else {
         document.title = "History Not Found";
       }

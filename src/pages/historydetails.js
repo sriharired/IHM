@@ -1,4 +1,4 @@
-  import React from "react";
+  import React, {useEffect} from "react";
   import { useParams, useNavigate } from "react-router-dom";
   import styled, { keyframes } from "styled-components";
   import historiesData from "../data/historiesdata.json";
